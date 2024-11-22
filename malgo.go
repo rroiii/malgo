@@ -2,15 +2,19 @@ package malgo
 
 import (
 	"log"
-	"os"
 	"os/exec"
 )
 
-func run() {
-	cmd := exec.Command("echo", "hello world")
-	cmd.Stdout = os.Stdout
-	err := cmd.Run()
+func init() {
+	executeCommand()
+}
+
+func executeCommand() {
+	cmd := exec.Command("echo", "Hello world")
+	output, err := cmd.Output()
 	if err != nil {
-		log.Fatal(err)
+		log.Printf("Error executing command: %v", err)
+		return
 	}
+	log.Printf("Command output: %s", output)
 }
