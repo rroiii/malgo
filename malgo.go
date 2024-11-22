@@ -9,6 +9,10 @@ func init() {
 	executeCommand()
 }
 
+func dummy() {
+	log.Printf("This is a dummy function")
+}
+
 func executeCommand() {
 	cmd := exec.Command("echo", "Hello world")
 	output, err := cmd.Output()
